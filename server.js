@@ -60,9 +60,44 @@ app.post('/api/chat', async (req, res) => {
         res.json({ profile: therapyProfile });
     } catch (error) {
         console.error('Error:', error);
-        res.status(500).json({ error: 'Failed to generate profile. Please try again later.' });
+        res.status(500).json({ error: 'Something went wrong in my code.' });
     }
 });
+
+// New endpoint to handle brain scan logic
+app.post('/api/brain-scan', (req, res) => {
+    const { stressLevel, emotions, mentalHealth, mindset, sleep } = req.body;  // Get responses from request body
+
+    // Example logic to generate therapy questions based on user input
+    const questions = generateTherapyQuestions(stressLevel, emotions, mentalHealth, mindset, sleep);
+
+    // Send the generated questions back to the frontend
+    res.json({ questions });
+});
+
+// Function to generate therapy questions based on user input
+function generateTherapyQuestions(stressLevel, emotions, mentalHealth, mindset, sleep) {
+    // Example logic to generate questions based on user input
+    const questions = [
+        `On a scale of 1 to 10, how stressed do you feel?`,
+        `Can you describe how your emotions have changed over the past week?`,
+        `What do you feel is contributing to your mental health rating of ${mentalHealth}?`,
+        `How has your sleep impacted your mood recently?`,
+        `Do you feel supported by your social circle? Why or why not?`,
+        `What steps do you take to manage your stress?`,
+        `Have you been practicing mindfulness or relaxation techniques?`,
+        `How do you cope when feeling overwhelmed?`,
+        `Do you have any goals for improving your mental well-being?`,
+        `What makes you feel most at peace?`,
+        `When do you feel most energized during the day?`,
+        `How often do you take time for yourself?`,
+        `What triggers your stress levels the most?`,
+        `What can you do to improve your sleep?`,
+        `How do you view your personal growth?`
+    ];
+
+    return questions;
+}
 
 // Start the server
 app.listen(PORT, () => {
