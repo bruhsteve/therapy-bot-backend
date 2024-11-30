@@ -14,6 +14,10 @@ app.use(cors());
 // Middleware to parse JSON requests
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the Therapy Bot API');
+});
+
 // Chat endpoint that communicates with OpenAI
 app.post('/api/chat', async (req, res) => {
     const responses = req.body.responses;  // Get responses from request body
