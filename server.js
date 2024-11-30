@@ -6,7 +6,7 @@ import cors from 'cors';  // To enable Cross-Origin Resource Sharing (CORS)
 dotenv.config();  // Load environment variables from .env file
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 console.log(process.env.OPENAI_API_KEY);
 
 // Enable CORS for all origins (or specify domains if you need more control)
