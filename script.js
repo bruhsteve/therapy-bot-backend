@@ -18,6 +18,12 @@ async function submitResponses(responses) {
 
         // Get the JSON data from the server
         const data = await response.json();
+
+        // Ensure the data contains the profile key
+        if (!data.profile) {
+            throw new Error('Profile not found in response.');
+        }
+
         const therapyProfile = data.profile; // Extract the profile from the response
 
         // Update the UI with the therapy profile
@@ -29,7 +35,7 @@ async function submitResponses(responses) {
         console.error('Error:', error);
         responseDiv.innerHTML = `
             <h2>Something went wrong</h2>
-            <p>Please try again later.</p>
+            <p>Please try again later. Error: ${error.message}</p>
         `;
     }
 }
