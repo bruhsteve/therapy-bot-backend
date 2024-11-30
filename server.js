@@ -7,6 +7,7 @@ dotenv.config();  // Load environment variables from .env file
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+console.log(process.env.OPENAI_API_KEY);
 
 // Enable CORS for all origins (or specify domains if you need more control)
 app.use(cors());
@@ -47,7 +48,8 @@ app.post('/api/chat', async (req, res) => {
 
         // Check if OpenAI API returned an error
         if (!response.ok) {
-            throw new Error('OpenAI API request failed');
+            console.log('OpenAI API Error:', await response.text());  // Log OpenAI API error
+            return res.status(response.status).json({ error: 'Error from OpenAI API.' });
         }
 
         // Get the response from OpenAI
