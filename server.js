@@ -39,7 +39,7 @@ app.post('/api/chat', async (req, res) => {
             body: JSON.stringify({
                 model: 'gpt-3.5-turbo',  // Model used for completions
                 messages: [
-                    { role: 'system', content: 'You are a helpful therapist.' },
+                    { role: 'system', content: 'You are a helpful therapist, your job is to take in responses from the user and give them a holistic therapeutic plan to improve their mental wellbeing.' },
                     { role: 'user', content: `User input: ${responses.join(', ')}` },  // Responses from user
                 ],
                 max_tokens: 100,  // Limit response length
