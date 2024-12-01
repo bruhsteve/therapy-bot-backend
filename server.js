@@ -41,8 +41,7 @@ app.post('/api/chat', async (req, res) => {
                 messages: [
                     { role: 'system', content: 'You are a helpful therapist, your job is to take in responses from the user and give them a holistic therapeutic plan to improve their mental wellbeing.' },
                     { role: 'user', content: `User input: ${responses.join(', ')}` },  // Responses from user
-                ],
-                max_tokens: 100,  // Limit response length
+                ]
             }),
         });
 
