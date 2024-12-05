@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 
 // Environment variables
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 const API_KEY = process.env.API_KEY;
 
 // API route to handle requests
