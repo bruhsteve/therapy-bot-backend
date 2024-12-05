@@ -2,11 +2,15 @@ import dotenv from 'dotenv';
 import express from 'express';
 import fetch from 'node-fetch';
 import cors from 'cors';
-app.use(cors());
 
+// Initialize dotenv and load environment variables
 dotenv.config();
 
+// Initialize express app
 const app = express();
+
+// Enable CORS
+app.use(cors());
 
 // Middleware to parse JSON in requests
 app.use(express.json());
@@ -52,6 +56,7 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
