@@ -1,6 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import fetch from 'node-fetch';
+import cors from 'cors';
+app.use(cors());
 
 dotenv.config();
 
