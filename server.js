@@ -1,18 +1,17 @@
-// Load environment variables
-require('dotenv').config();
+import dotenv from 'dotenv';
+import express from 'express';
+import fetch from 'node-fetch';
 
-const express = require('express');
-const fetch = require('node-fetch');
+dotenv.config();
+
 const app = express();
 
 // Middleware to parse JSON in requests
 app.use(express.json());
 
-// Environment variables
 const PORT = process.env.PORT || 10000;
 const API_KEY = process.env.API_KEY;
 
-// API route to handle requests
 app.post('/api/chat', async (req, res) => {
     const { prompt } = req.body;
 
@@ -30,7 +29,7 @@ app.post('/api/chat', async (req, res) => {
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
                 messages: [
-                    { role: "system", content: "You are a helpful assistant providing therapeutic suggestions." },
+                    { role: "system", content: "You are a helpful assistant." },
                     { role: "user", content: prompt },
                 ],
                 max_tokens: 500,
@@ -51,7 +50,6 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-// Start the server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
